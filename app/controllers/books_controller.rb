@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   def index
     @book = Book.new
-    @books = Book.all.order(created_at: :desc)
+    @books = Book.all
   end
 
   def create
@@ -10,7 +10,7 @@ class BooksController < ApplicationController
       flash[:notice] = "Book flashwas successfully created."
       redirect_to book_path(@book.id)
     else
-      @books = Book.all.order(created_at: :desc)
+      @books = Book.all
       render :index
     end
   end
